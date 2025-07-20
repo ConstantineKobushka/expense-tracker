@@ -1,0 +1,26 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1440px;
+  padding: 20px;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+.section {
+  padding: 10px 0;
+}
+.title {
+  margin-bottom: 10px;
+}

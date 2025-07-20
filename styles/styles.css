@@ -1,0 +1,9 @@
+/* Common styles */
+@import url("./reset.css");
+@import url("./base.css");
+
+/* Sections style */
+@import url("../../components/FormAddTransaction/FormAddTransaction.css");
+@import url("../../components/Balance/Balance.css");
+@import url("../../components/Filters/Filters.css");
+@import url("../../components/TransactionsList/TransactionsList.css");

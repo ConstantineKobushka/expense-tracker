@@ -1,0 +1,35 @@
+<div class="container">
+  <h3 class="title">Add Transaction</h3>
+  <form class="transaction-form">
+    <select class="transaction-form--select" name="type" id="">
+      <option value="" selected disabled hidden>Type</option>
+      <option value="income">Income</option>
+      <option value="expense">Expense</option>
+    </select>
+    <input
+      class="transaction-form--input transaction-form--input-data"
+      type="date"
+      name="date"
+      placeholder="Date"
+    />
+    <input
+      class="transaction-form--input"
+      type="number"
+      name="amount"
+      placeholder="Amound"
+    />
+    <input
+      class="transaction-form--input"
+      type="text"
+      name="category"
+      placeholder="Category"
+    />
+    <input
+      class="transaction-form--input"
+      type="text"
+      name="description"
+      placeholder="Description"
+    />
+    <button class="transaction-form--btn">Add</button>
+  </form>
+</div>

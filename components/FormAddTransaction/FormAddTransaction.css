@@ -1,0 +1,28 @@
+.transaction-form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.transaction-form--select {
+  width: 200px;
+  padding: 6px;
+  border-radius: 5px;
+}
+.transaction-form--input {
+  width: 200px;
+  padding: 6px;
+  display: inline-block;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.transaction-form--input-data {
+  padding: 5px;
+}
+.transaction-form--btn {
+  min-width: 100px;
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+}

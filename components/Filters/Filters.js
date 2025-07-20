@@ -2,9 +2,6 @@ import { fakeTransactionService } from '../../services/fakeTransactionService.js
 import { apiFetchHtml } from '../../api/fetchApi.js';
 
 export async function createFilters(FiltersContainer) {
-  // const response = await fetch('./src/components/Filters/Filters.html');
-  // const html = await response.text();
-
   const html = await apiFetchHtml('./components/Filters/Filters.html');
 
   FiltersContainer.innerHTML = html;

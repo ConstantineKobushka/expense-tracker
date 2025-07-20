@@ -4,16 +4,10 @@
   flex-wrap: wrap;
   gap: 20px;
 }
-.filters-form--grop {
-}
-.filters-form--label {
-}
 .filters-form--select {
   width: 200px;
   padding: 6px;
   border-radius: 5px;
-}
-.filters-form-grop {
 }
 .filters-form--input {
   width: 200px;

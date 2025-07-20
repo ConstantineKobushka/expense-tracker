@@ -1,3 +1,5 @@
+import store from './data/observableStore.js';
+
 import { createFormAddTransaction } from './components/FormAddTransaction/FormAddTransaction.js';
 import { createBalance } from './components/Balance/Balance.js';
 import { createFilters } from './components/Filters/Filters.js';
@@ -18,4 +20,12 @@ if (formAddTransactionEl && transactionsListEl && balanceEl && filtersEl) {
   createBalance(balanceEl);
   createFilters(filtersEl);
   createTransactionsList(transactionsListEl);
+
+  const transactions = JSON.parse(localStorage.getItem('transactions')) ?? [];
+
+  store.set(transactions);
+
+  store.subscribe((transactions) => {
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+  });
 }

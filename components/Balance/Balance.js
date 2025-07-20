@@ -2,9 +2,6 @@ import { fakeTransactionService } from '../../services/fakeTransactionService.js
 import { formatCurrencyLocation } from '../../utils/formatCurrency.js';
 
 export async function createBalance(balanceContainer) {
-  // const response = await fetch('./src/components/Balance/Balance.html');
-  // const html = await response.text();
-
   const transactions = await fakeTransactionService.getAll();
 
   const incomes = transactions

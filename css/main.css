@@ -2,7 +2,7 @@
 @import url("./reset.css");
 @import url("./base.css");
 
-/* Sections style */
+/* components style */
 @import url("../components/FormAddTransaction/FormAddTransaction.css");
 @import url("../components/Balance/Balance.css");
 @import url("../components/Filters/Filters.css");

@@ -1,5 +1,4 @@
 import store from '../../data/observableStore.js';
-
 import { escapeHTML } from '../../utils/escapeHTML.js';
 import { formatCurrency } from '../../utils/formatCurrency.js';
 import { apiFetchHtml } from '../../api/fetchApi.js';
@@ -36,13 +35,34 @@ export async function createTransactionsList(transactionContainer) {
           <td>${escapeHTML(item.category)}</td>
           <td>${escapeHTML(item.date)}</td>
           <td>${escapeHTML(item.description)}</td>
-          <td><button class="transaction-list--btn"><img class="transaction-list--img" src="./images/edite.svg" alt="Edite" /></button></td>
-          <td><button class="transaction-list--btn"><img class="transaction-list--img" src="./images/delete.svg" alt="Delete" /></button></td>
+          <td>
+          <button class="transaction-list--btn edite" data-value="edite">
+          <img class="transaction-list--img" src="./images/edite.svg" alt="Edite" />
+          </button></td>
+          <td>
+          <button class="transaction-list--btn delete" data-value="delete">
+          <img class="transaction-list--img" src="./images/delete.svg" alt="Delete" />
+          </button></td>
         </tr>`
       )
       .join('');
 
     tableEl.insertAdjacentHTML('beforeend', markup);
+  }
+
+  tableEl.addEventListener('click', changeTransactionHandler);
+
+  function changeTransactionHandler(e) {
+    if (e.target.tagName !== 'BUTTON') return;
+
+    if (e.target.dataset.value === 'edite') {
+      console.log(e.target.closest('tr'));
+    }
+
+    if (e.target.dataset.value === 'delete') {
+      const id = e.target.closest('tr').dataset.id;
+      store.remove(id);
+    }
   }
 
   store.subscribe(renderTransactions);

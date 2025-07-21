@@ -1,3 +1,5 @@
+import { generateId } from '../utils/generateId.js';
+
 const store = {
   transactions: [],
   listeners: [],
@@ -19,6 +21,16 @@ const store = {
   add(newTransaction) {
     this.set([...this.transactions, newTransaction]);
   },
+
+  // add(newTransaction) {
+  //   console.log(newTransaction);
+  //   const transactions = {
+  //     ...newTransaction,
+  //     id: generateId(),
+  //   };
+  //   console.log(transactions);
+  //   this.set(this.transactions.push(transactions));
+  // },
 
   remove(id) {
     this.set(this.transactions.filter((t) => t.id !== id));

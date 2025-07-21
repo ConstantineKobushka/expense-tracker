@@ -19,18 +19,14 @@ const store = {
   },
 
   add(newTransaction) {
-    this.set([...this.transactions, newTransaction]);
+    console.log(newTransaction);
+    const data = {
+      ...newTransaction,
+      id: generateId(),
+    };
+    console.log(data);
+    this.set([...this.transactions, data]);
   },
-
-  // add(newTransaction) {
-  //   console.log(newTransaction);
-  //   const transactions = {
-  //     ...newTransaction,
-  //     id: generateId(),
-  //   };
-  //   console.log(transactions);
-  //   this.set(this.transactions.push(transactions));
-  // },
 
   remove(id) {
     this.set(this.transactions.filter((t) => t.id !== id));

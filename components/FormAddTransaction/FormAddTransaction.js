@@ -20,7 +20,6 @@ export async function createFormAddTransaction(formAddContainer) {
     e.preventDefault();
 
     const newTransaction = {
-      id: generateId(),
       type: transactionForm.elements.type.value,
       amount: Number(transactionForm.elements.amount.value),
       category: transactionForm.elements.category.value.trim(),

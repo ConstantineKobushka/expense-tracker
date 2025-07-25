@@ -64,8 +64,7 @@ table tr:last-child td:last-child {
 .transaction-edite-form--overlay.is-open {
   transform: translateX(0);
 }
-.transaction-edite-form--wrapper {
-  height: 120px;
+.transaction-edite-form--modal {
   padding: 20px;
   border-radius: 25px;
   border: 1px solid black;
@@ -73,42 +72,56 @@ table tr:last-child td:last-child {
   transform: translateX(150%);
   transition: transform 0.3s ease-in;
 }
-.transaction-edite-form--wrapper.is-open {
+.transaction-edite-form--modal.is-open {
   transform: translateX(0);
 }
 
 .transaction-edite-form--close-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 20px;
   right: 20px;
-  border-radius: 5px;
+  border-radius: 50%;
   border: 1px solid black;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
-.transaction-edit-form {
+.transaction-edite-form--close-img {
+  width: 100%;
+  height: 100%;
+}
+.transaction-edite-form {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
 }
-.transaction-edit-form--select {
+.transaction-edite-form--select {
   width: 200px;
   padding: 6px;
   border-radius: 5px;
 }
-.transaction-edit-form--input {
+.transaction-edite-form--input {
   width: 200px;
   padding: 6px;
   display: inline-block;
   border-radius: 5px;
   border: 1px solid black;
 }
-.transaction-edit-form--input-data {
+.transaction-edite-form--input-data {
   padding: 5px;
 }
-.transaction-edit-form--btn {
+.transaction-edite-form--btn {
   min-width: 100px;
   padding: 6px;
   border-radius: 5px;
   border: 1px solid black;
   cursor: pointer;
+}
+.no-scroll {
+  overflow-y: hidden;
 }

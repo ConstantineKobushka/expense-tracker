@@ -2,41 +2,47 @@
   <h3 class="title">Список транзакцій</h3>
   <table></table>
 
-  <div class="transaction-edite-form--overlay is-open">
-    <div class="transaction-edite-form--wrapper is-open">
+  <div class="transaction-edite-form--overlay">
+    <div class="transaction-edite-form--modal">
       <h3 class="title">Edite Transaction</h3>
-      <button class="transaction-edite-form--close-btn">❌</button>
+      <button class="transaction-edite-form--close-btn">
+        <img
+          class="transaction-edite-form--close-img"
+          src="../../images/close.svg"
+          alt=""
+        />
+      </button>
       <form class="transaction-edite-form">
-        <select class="transaction-edit-form--select" name="type" id="">
+        <select class="transaction-edite-form--select" name="type" id="">
           <option value="" selected disabled hidden>Type</option>
           <option value="income">Income</option>
           <option value="expense">Expense</option>
         </select>
         <input
-          class="transaction-edit-form--input transaction-form--input-data"
+          class="transaction-edite-form--input transaction-form--input-data"
           type="date"
           name="date"
           placeholder="Date"
         />
         <input
-          class="transaction-edit-form--input"
+          class="transaction-edite-form--input"
           type="number"
           name="amount"
           placeholder="Amound"
         />
         <input
-          class="transaction-edit-form--input"
+          class="transaction-edite-form--input"
           type="text"
           name="category"
           placeholder="Category"
         />
         <input
-          class="transaction-edit-form--input"
+          class="transaction-edite-form--input"
           type="text"
           name="description"
           placeholder="Description"
         />
-        <button class="transaction-edit-form--btn">Add</button>
+        <button class="transaction-edite-form--btn">Add</button>
       </form>
     </div>
   </div>

@@ -32,10 +32,19 @@ const store = {
     this.set(this.transactions.filter((t) => t.id !== id));
   },
 
-  update(updatedTransaction) {
+  update(transactionData) {
     this.set(
-      this.transactions.map((t) =>
-        t.id === updatedTransaction.id ? updatedTransaction : t
+      this.transactions.map((item) =>
+        item.id === transactionData.id
+          ? {
+              ...item,
+              type: transactionData.type,
+              amount: transactionData.amount,
+              category: transactionData.category,
+              date: transactionData.date,
+              description: transactionData.description,
+            }
+          : item
       )
     );
   },

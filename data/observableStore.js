@@ -2,11 +2,17 @@ import { generateId } from '../utils/generateId.js';
 
 const store = {
   transactions: [],
+  filteredTransaction: [],
   listeners: [],
 
   subscribe(callback) {
     this.listeners.push(callback);
-    callback(this.transactions);
+    callback(this.transactions, this.filteredTransaction);
+  },
+
+  filter(transactions) {
+    this.filteredTransaction = transactions;
+    this.notify();
   },
 
   get() {
@@ -19,12 +25,10 @@ const store = {
   },
 
   add(newTransaction) {
-    console.log(newTransaction);
     const data = {
       ...newTransaction,
       id: generateId(),
     };
-    console.log(data);
     this.set([...this.transactions, data]);
   },
 
@@ -50,7 +54,7 @@ const store = {
   },
 
   notify() {
-    this.listeners.forEach((cb) => cb(this.get()));
+    this.listeners.forEach((cb) => cb(this.get(), this.filteredTransaction));
   },
 };
 

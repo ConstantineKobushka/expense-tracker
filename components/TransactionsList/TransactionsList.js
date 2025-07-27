@@ -12,7 +12,10 @@ export async function createTransactionsList(transactionContainer) {
 
   const tableEl = transactionContainer.querySelector('table');
 
-  function renderTransactions(transactions) {
+  function renderTransactions(allTransactions, filteredTransaction) {
+    const transactions =
+      filteredTransaction.length === 0 ? allTransactions : filteredTransaction;
+
     tableEl.innerHTML = `
     <thead>
       <tr>
@@ -89,6 +92,7 @@ export async function createTransactionsList(transactionContainer) {
     if (e.target.dataset.value === 'delete') {
       const id = e.target.closest('tr').dataset.id;
       store.remove(id);
+      store.filter([]);
     }
   }
 
@@ -105,6 +109,7 @@ export async function createTransactionsList(transactionContainer) {
     };
 
     store.update(transactionData);
+    store.filter([]);
 
     editeForm.reset();
 

@@ -11,12 +11,7 @@ const filtersEl = document.getElementById('filters');
 const transactionsListEl = document.getElementById('sample-component');
 
 if (formAddTransactionEl && transactionsListEl && balanceEl && filtersEl) {
-  createFormAddTransaction(
-    formAddTransactionEl,
-    transactionsListEl,
-    balanceEl,
-    filtersEl
-  );
+  createFormAddTransaction(formAddTransactionEl);
   createBalance(balanceEl);
   createFilters(filtersEl);
   createTransactionsList(transactionsListEl);

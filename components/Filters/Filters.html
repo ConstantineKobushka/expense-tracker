@@ -1,25 +1,27 @@
 <div class="container">
   <h3 class="title">Filters</h3>
   <form class="filters-form">
-    <select class="filters-form--select" name="type">
+    <select class="filters-form--select" id="filter-type" name="type">
       <option value="type" selected disabled hidden>Type</option>
       <option value="all">All</option>
       <option value="income">Income</option>
       <option value="expense">Expense</option>
     </select>
 
-    <select class="filters-form--select" name="category" id="category">
+    <select class="filters-form--select" id="filter-category" name="category">
       <option value="category" selected disabled hidden>Category</option>
     </select>
 
     <input
       class="filters-form--input"
+      id="filter-amound"
       name="amound"
       type="text"
       placeholder="Amound"
     />
     <input
       class="filters-form--input"
+      id="filter-search"
       name="search"
       type="text"
       placeholder="Search"

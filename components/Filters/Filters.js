@@ -41,11 +41,13 @@ export async function createFilters(FiltersContainer) {
   const filterCategory = document.querySelector('#filter-category');
   const filterAmound = document.querySelector('#filter-amound');
   const filterDescription = document.querySelector('#filter-search');
+  const filterDate = document.querySelector('#filter-date');
 
   filterType.addEventListener('change', showFilterTypeHandler);
   filterCategory.addEventListener('change', showFilterCategoryHandler);
   filterAmound.addEventListener('input', showFilterAmoundHandler);
   filterDescription.addEventListener('input', showFilterSearchHandler);
+  filterDate.addEventListener('input', showFilterDateHandler);
 
   let filtered = [];
 
@@ -57,6 +59,19 @@ export async function createFilters(FiltersContainer) {
         return item.type === filterType.value;
       }
     });
+
+    if (filtered.length > 0) {
+      store.filter(filtered);
+    }
+
+    filterDate.value = '';
+    filterCategory.value = 'category';
+    filterAmound.value = '';
+    filterDescription.value = '';
+  }
+
+  function showFilterDateHandler(e) {
+    filtered = store.get().filter((item) => item.date === filterDate.value);
 
     if (filtered.length > 0) {
       store.filter(filtered);
@@ -77,6 +92,7 @@ export async function createFilters(FiltersContainer) {
     }
 
     filterType.value = 'type';
+    filterDate.value = '';
     filterAmound.value = '';
     filterDescription.value = '';
   }
@@ -95,6 +111,7 @@ export async function createFilters(FiltersContainer) {
     }
 
     filterType.value = 'type';
+    filterDate.value = '';
     filterCategory.value = 'category';
     filterDescription.value = '';
   }
@@ -113,6 +130,7 @@ export async function createFilters(FiltersContainer) {
     }
 
     filterType.value = 'type';
+    filterDate.value = '';
     filterCategory.value = 'category';
     filterAmound.value = '';
   }

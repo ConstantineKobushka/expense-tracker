@@ -45,8 +45,8 @@ table tr:last-child td:last-child {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(94, 99, 99, 0.7);
   background-color: rgb(21 189 189 / 70%);
+  /* background-image: linear-gradient(to top left, #068394, #40dad2); */
   transform: translateX(150%);
   transition: transform 0.3s ease-in;
   z-index: 1;
@@ -62,6 +62,7 @@ table tr:last-child td:last-child {
   border-radius: 25px;
   border: 1px solid black;
   background-color: #fff;
+  /* background-image: linear-gradient(to top left, #547202, #b7d433); */
   transform: translateX(150%);
   transition: transform 0.3s ease-in;
 }

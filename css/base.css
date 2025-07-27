@@ -17,6 +17,7 @@ body {
   margin: 0 auto;
   border: 1px solid black;
   border-radius: 15px;
+  /* background-image: linear-gradient(to top left, #547202, #b7d433); */
 }
 .section {
   padding: 10px 0;

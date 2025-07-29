@@ -12,51 +12,6 @@ export async function createTransactionsList(transactionContainer) {
 
   const tableEl = transactionContainer.querySelector('table');
 
-  function renderTransactions(allTransactions, filteredTransaction) {
-    const transactions =
-      filteredTransaction === null
-        ? allTransactions
-        : Array.from(filteredTransaction)
-        ? filteredTransaction
-        : [];
-
-    tableEl.innerHTML = `
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Amound</th>
-        <th>Category</th>
-        <th>Date</th>
-        <th>Description</th>
-        <th>Edite</th>
-        <th>Delete</th>
-      </tr>
-    </thead>`;
-
-    const markup = transactions
-      .map(
-        (item) => `
-        <tr data-id="${escapeHTML(item.id)}">
-          <td>${item.type === 'income' ? 'Дохід' : 'Витрата'}</td>
-          <td>${formatCurrency(item.amount)}</td>
-          <td>${escapeHTML(item.category)}</td>
-          <td>${escapeHTML(item.date)}</td>
-          <td>${escapeHTML(item.description)}</td>
-          <td>
-          <button class="transaction-list--btn edite" data-value="edite">
-          <img class="transaction-list--img" src="./images/edite.svg" alt="Edite" />
-          </button></td>
-          <td>
-          <button class="transaction-list--btn delete" data-value="delete">
-          <img class="transaction-list--img" src="./images/delete.svg" alt="Delete" />
-          </button></td>
-        </tr>`
-      )
-      .join('');
-
-    tableEl.insertAdjacentHTML('beforeend', markup);
-  }
-
   const formOverlay = document.querySelector(
     '.transaction-edite-form--overlay'
   );
@@ -138,6 +93,51 @@ export async function createTransactionsList(transactionContainer) {
     formOverlay.classList.remove('is-open');
     formModal.classList.remove('is-open');
     noScrol();
+  }
+
+  function renderTransactions(allTransactions, filteredTransaction) {
+    const transactions =
+      filteredTransaction === null
+        ? allTransactions
+        : Array.from(filteredTransaction)
+        ? filteredTransaction
+        : [];
+
+    tableEl.innerHTML = `
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Amound</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Edite</th>
+        <th>Delete</th>
+      </tr>
+    </thead>`;
+
+    const markup = transactions
+      .map(
+        (item) => `
+        <tr data-id="${escapeHTML(item.id)}">
+          <td>${item.type === 'income' ? 'Дохід' : 'Витрата'}</td>
+          <td>${formatCurrency(item.amount)}</td>
+          <td>${escapeHTML(item.category)}</td>
+          <td>${escapeHTML(item.date)}</td>
+          <td>${escapeHTML(item.description)}</td>
+          <td>
+          <button class="transaction-list--btn edite" data-value="edite">
+          <img class="transaction-list--img" src="./images/edite.svg" alt="Edite" />
+          </button></td>
+          <td>
+          <button class="transaction-list--btn delete" data-value="delete">
+          <img class="transaction-list--img" src="./images/delete.svg" alt="Delete" />
+          </button></td>
+        </tr>`
+      )
+      .join('');
+
+    tableEl.insertAdjacentHTML('beforeend', markup);
   }
 
   store.subscribe(renderTransactions);

@@ -63,7 +63,7 @@ export async function createFilters(FiltersContainer) {
     const value = filterElements.amount.value.trim();
     if (!value) return store.filter(null);
 
-    filterHandler((item) => item.amount.toString() === value, 'amount');
+    filterHandler((item) => item.amount.toString().includes(value), 'amount');
   }
 
   function showFilterDescriptionHandler() {

@@ -1,4 +1,4 @@
-import store from '../../data/observableStore.js';
+import store from '../../observable/observableStore.js';
 import { escapeHTML } from '../../utils/escapeHTML.js';
 import { formatCurrency } from '../../utils/formatCurrency.js';
 import { apiFetchHtml } from '../../api/fetchApi.js';
@@ -14,7 +14,11 @@ export async function createTransactionsList(transactionContainer) {
 
   function renderTransactions(allTransactions, filteredTransaction) {
     const transactions =
-      filteredTransaction.length === 0 ? allTransactions : filteredTransaction;
+      filteredTransaction === null
+        ? allTransactions
+        : Array.from(filteredTransaction)
+        ? filteredTransaction
+        : [];
 
     tableEl.innerHTML = `
     <thead>
@@ -92,7 +96,7 @@ export async function createTransactionsList(transactionContainer) {
     if (e.target.dataset.value === 'delete') {
       const id = e.target.closest('tr').dataset.id;
       store.remove(id);
-      store.filter([]);
+      store.filter(null);
     }
   }
 
@@ -109,7 +113,7 @@ export async function createTransactionsList(transactionContainer) {
     };
 
     store.update(transactionData);
-    store.filter([]);
+    store.filter(null);
 
     editeForm.reset();
 

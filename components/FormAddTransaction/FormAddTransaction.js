@@ -1,4 +1,4 @@
-import store from '../../data/observableStore.js';
+import store from '../../observable/observableStore.js';
 import { apiFetchHtml } from '../../api/fetchApi.js';
 
 export async function createFormAddTransaction(formAddContainer) {
@@ -29,6 +29,6 @@ export async function createFormAddTransaction(formAddContainer) {
     transactionForm.reset();
 
     store.add(newTransaction);
-    store.filter([]);
+    store.filter(null);
   }
 }

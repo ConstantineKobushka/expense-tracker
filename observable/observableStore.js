@@ -2,7 +2,7 @@ import { generateId } from '../utils/generateId.js';
 
 const store = {
   transactions: [],
-  filteredTransaction: [],
+  filteredTransaction: null,
   listeners: [],
 
   subscribe(callback) {

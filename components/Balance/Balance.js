@@ -1,4 +1,4 @@
-import store from '../../data/observableStore.js';
+import store from '../../observable/observableStore.js';
 import { apiFetchHtml } from '../../api/fetchApi.js';
 import { formatCurrencyLocation } from '../../utils/formatCurrency.js';
 

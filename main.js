@@ -1,4 +1,4 @@
-import store from './data/observableStore.js';
+import store from './observable/observableStore.js';
 
 import { createFormAddTransaction } from './components/FormAddTransaction/FormAddTransaction.js';
 import { createBalance } from './components/Balance/Balance.js';

@@ -1,4 +1,4 @@
-import store from '../../data/observableStore.js';
+import store from '../../observable/observableStore.js';
 import { apiFetchHtml } from '../../api/fetchApi.js';
 
 export async function createFilters(FiltersContainer) {
@@ -6,133 +6,96 @@ export async function createFilters(FiltersContainer) {
 
   FiltersContainer.innerHTML = html;
 
-  const categoryContainer = document.querySelector('#filter-category');
+  const filterElements = {
+    type: document.querySelector('#filter-type'),
+    category: document.querySelector('#filter-category'),
+    amount: document.querySelector('#filter-amound'),
+    description: document.querySelector('#filter-search'),
+    date: document.querySelector('#filter-date'),
+  };
 
-  async function renderSelect(transactions) {
-    const currentValue = categoryContainer.value;
+  filterElements.type.addEventListener('change', showFilterTypeHandler);
+  filterElements.category.addEventListener('change', showFilterCategoryHandler);
+  filterElements.amount.addEventListener('input', showFilterAmountHandler);
+  filterElements.description.addEventListener(
+    'input',
+    showFilterDescriptionHandler
+  );
+  filterElements.date.addEventListener('input', showFilterDateHandler);
+
+  function resetFilters(except) {
+    Object.entries(filterElements).forEach(([key, el]) => {
+      if (key === except) return;
+      el.value = key === 'type' ? 'type' : key === 'category' ? 'category' : '';
+    });
+  }
+
+  function filterHandler(predicate, activeKey) {
+    const allTransactions = store.get();
+    const filteredTransactions = allTransactions.filter(predicate);
+
+    store.filter(filteredTransactions);
+
+    resetFilters(activeKey);
+  }
+
+  function showFilterTypeHandler() {
+    filterHandler(
+      (item) =>
+        filterElements.type.value === 'all' ||
+        item.type === filterElements.type.value,
+      'type'
+    );
+  }
+
+  function showFilterDateHandler() {
+    filterHandler((item) => item.date === filterElements.date.value, 'date');
+  }
+
+  function showFilterCategoryHandler() {
+    filterHandler(
+      (item) => item.category === filterElements.category.value,
+      'category'
+    );
+  }
+
+  function showFilterAmountHandler() {
+    const value = filterElements.amount.value.trim();
+    if (!value) return store.filter(null);
+
+    filterHandler((item) => item.amount.toString() === value, 'amount');
+  }
+
+  function showFilterDescriptionHandler() {
+    const value = filterElements.description.value.trim().toLowerCase();
+    if (!value) return store.filter(null);
+
+    filterHandler(
+      (item) => item.description.toLowerCase().includes(value),
+      'description'
+    );
+  }
+
+  function renderSelect(transactions) {
+    const categorySelect = filterElements.category;
+    const currentValue = categorySelect.value;
 
     const uniqueCategories = [
       ...new Set(transactions.map((transaction) => transaction.category)),
     ];
 
-    const defaultOption = `<option value="category" selected disabled hidden>Category</option>`;
+    const options = [
+      `<option value="category" selected disabled hidden>Category</option>`,
+      ...uniqueCategories.map(
+        (category) => `<option value="${category}">${category}</option>`
+      ),
+    ];
 
-    const otherOption = uniqueCategories
-      .map(
-        (category) => `
-      <option class="product-form--select" value="${category}">${category}</option>`
-      )
-      .join('');
+    categorySelect.innerHTML = options.join('');
 
-    const markup = defaultOption + otherOption;
-    categoryContainer.innerHTML = markup;
-
-    if (
-      uniqueCategories.includes(currentValue) ||
-      currentValue === 'category'
-    ) {
-      categoryContainer.value = currentValue;
-    } else {
-      categoryContainer.value = 'category';
-    }
-  }
-
-  const filterType = document.querySelector('#filter-type');
-  const filterCategory = document.querySelector('#filter-category');
-  const filterAmound = document.querySelector('#filter-amound');
-  const filterDescription = document.querySelector('#filter-search');
-  const filterDate = document.querySelector('#filter-date');
-
-  filterType.addEventListener('change', showFilterTypeHandler);
-  filterCategory.addEventListener('change', showFilterCategoryHandler);
-  filterAmound.addEventListener('input', showFilterAmoundHandler);
-  filterDescription.addEventListener('input', showFilterSearchHandler);
-  filterDate.addEventListener('input', showFilterDateHandler);
-
-  let filtered = [];
-
-  function showFilterTypeHandler(e) {
-    filtered = store.get().filter((item) => {
-      if (filterType.value === 'all') {
-        return true;
-      } else {
-        return item.type === filterType.value;
-      }
-    });
-
-    if (filtered.length > 0) {
-      store.filter(filtered);
-    }
-
-    filterDate.value = '';
-    filterCategory.value = 'category';
-    filterAmound.value = '';
-    filterDescription.value = '';
-  }
-
-  function showFilterDateHandler(e) {
-    filtered = store.get().filter((item) => item.date === filterDate.value);
-
-    if (filtered.length > 0) {
-      store.filter(filtered);
-    }
-
-    filterCategory.value = 'category';
-    filterAmound.value = '';
-    filterDescription.value = '';
-  }
-
-  function showFilterCategoryHandler(e) {
-    filtered = store
-      .get()
-      .filter((item) => item.category === filterCategory.value);
-
-    if (filtered.length > 0) {
-      store.filter(filtered);
-    }
-
-    filterType.value = 'type';
-    filterDate.value = '';
-    filterAmound.value = '';
-    filterDescription.value = '';
-  }
-
-  function showFilterAmoundHandler(e) {
-    filtered = store
-      .get()
-      .filter((item) => item.amount.toString() === filterAmound.value.trim());
-
-    if (filterAmound.value === '') {
-      store.filter([]);
-    }
-
-    if (filtered.length > 0) {
-      store.filter(filtered);
-    }
-
-    filterType.value = 'type';
-    filterDate.value = '';
-    filterCategory.value = 'category';
-    filterDescription.value = '';
-  }
-
-  function showFilterSearchHandler(e) {
-    filtered = store
-      .get()
-      .filter((item) =>
-        item.description
-          .toLowerCase()
-          .includes(filterDescription.value.trim().toLowerCase())
-      );
-
-    if (filtered.length > 0) {
-      store.filter(filtered);
-    }
-
-    filterType.value = 'type';
-    filterDate.value = '';
-    filterCategory.value = 'category';
-    filterAmound.value = '';
+    categorySelect.value = uniqueCategories.includes(currentValue)
+      ? currentValue
+      : 'category';
   }
 
   store.subscribe(renderSelect);

@@ -61,7 +61,6 @@ table tr:last-child td:last-child {
   border-radius: 25px;
   border: 1px solid black;
   background-color: #fff;
-  /* background-image: linear-gradient(to top left, #547202, #b7d433); */
   transform: translateX(150%);
   transition: transform 0.3s ease-in;
 }

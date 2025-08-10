@@ -1,61 +1,61 @@
-# Expense Tracker – Керуй своїми фінансами легко 💰📊📈
+# Expense Tracker – Manage Your Finances with Ease 💰📊📈
 
-🔗 **Демо:**  
-[https://github.com/ConstantineKobushka/expense-tracker](https://constantinekobushka.github.io/expense-tracker/)
+🔗 **Demo:**  
+[https://constantinekobushka.github.io/expense-tracker/](https://constantinekobushka.github.io/expense-tracker/)
 
 ![Expense Tracker Preview](preview.png)
 
 ---
 
-## 🔎 Опис проєкту
+## 🔎 Project Description
 
-**Expense Tracker** — це зручний додаток для обліку доходів і витрат, який допоможе завжди тримати фінанси під контролем.  
-З його допомогою можна відстежувати, на що витрачаються кошти, планувати бюджет та бачити реальну картину своїх фінансів.
+**Expense Tracker** is a convenient application for tracking income and expenses, helping you always keep your finances under control.  
+It allows you to see where your money goes, plan your budget, and get a clear picture of your financial situation.
 
-Додаток створений **без збірників проєкту**, з використанням **компонентного підходу** та головного архітектурного патерну **observable** для централізованого управління станом.
-
----
-
-## 📝 Користувач може:
-
-- ➕ Додавати нові транзакцію (дохід або витрату)
-- ✏️ Редагувати існуючи транзакції
-- 🗑️ Видаляти окремі транзакції
-- 💵 Переглядати поточний баланс
-- 🔍 Фільтрувати транзакції:
-  - 💲 за типом та сумою
-  - 🏷️ за категорією
-  - 📅 за датою
-  - 📝 за описом
+The app was created **without project bundlers**, using a **component-based approach** and the **observable** architectural pattern for centralized state management.
 
 ---
 
-## 🌟 Основний функціонал
+## 📝 Users can:
 
-- 💾 Збереження даних у Local Storage (пізніше – централізоване сховище)
-- 🔄 Автоматичне оновлення інтерфейсу при зміні стану завдяки **observable**
+- ➕ Add new transactions (income or expense)
+- ✏️ Edit existing transactions
+- 🗑️ Delete individual transactions
+- 💵 View the current balance
+- 🔍 Filter transactions:
+  - 💲 by type and amount
+  - 🏷️ by category
+  - 📅 by date
+  - 📝 by description
 
 ---
 
-## 🧰 Технологічний стек
+## 🌟 Core Features
+
+- 💾 Save data in Local Storage (later – centralized storage)
+- 🔄 Automatic UI updates on state changes via **observable**
+
+---
+
+## 🧰 Tech Stack
 
 ### 🔨 Frontend
 
-- **HTML5** – семантична та логічна розмітка
-- **CSS3** – стилізація та адаптивний дизайн
-- **JavaScript (ES6+)** – модульна структура, взаємодія з DOM, бізнес-логіка
-- **Компонентний підхід** – розділення функціоналу на окремі модулі
-- **Observable pattern** – централізоване управління станом без сторонніх бібліотек
+- **HTML5** – semantic and logical markup
+- **CSS3** – styling and responsive design
+- **JavaScript (ES6+)** – modular structure, DOM interaction, business logic
+- **Component-based approach** – separating functionality into individual modules
+- **Observable pattern** – centralized state management without external libraries
 
 ---
 
-## 🚀 Встановлення та запуск
+## 🚀 Installation & Launch
 
-### 📦 Клонування репозиторію:
+### 📦 Clone the repository:
 
 ```bash
-git clone https://github.com/ConstantineKobushka/expense-tracker
+git clone https://github.com/ConstantineKobushka/expense-tracker/
 
-Відкрийте папку проєкту у вашому редакторі коду (наприклад, VS Code)
-та відкрийте файл index.html у браузері — і сайт готовий до перегляду.
+Open the project folder in your code editor (for example VS Code)
+and open the index.html file in your browser — and the site is ready to view.
 ```

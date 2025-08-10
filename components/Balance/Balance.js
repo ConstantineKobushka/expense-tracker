@@ -3,22 +3,27 @@ import { apiFetchHtml } from '../../api/fetchApi.js';
 import { formatCurrencyLocation } from '../../utils/formatCurrency.js';
 
 export async function createBalance(balanceContainer) {
-  const html = await apiFetchHtml('./components/Balance/Balance.html');
-  balanceContainer.innerHTML = html;
+  try {
+    const html = await apiFetchHtml('./components/Balance/Balance.html');
+    balanceContainer.innerHTML = html;
+  } catch (error) {
+    alert(error.message);
+  }
+
   const balanceInner = document.querySelector('.balance-inner');
 
   function renderBalance(transactions) {
     const incomes = transactions
       .filter((item) => item.type === 'income')
       .reduce((acc, item) => {
-        acc += item.amount;
+        acc += item.amound;
         return Math.round(acc * 100) / 100;
       }, 0);
 
     const expenses = transactions
       .filter((item) => item.type === 'expense')
       .reduce((acc, item) => {
-        acc += item.amount;
+        acc += item.amound;
         return Math.round(acc * 100) / 100;
       }, 0);
 

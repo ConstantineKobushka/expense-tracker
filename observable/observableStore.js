@@ -2,16 +2,16 @@ import { generateId } from '../utils/generateId.js';
 
 const store = {
   transactions: [],
-  filteredTransaction: null,
+  filteredTransactions: null,
   listeners: [],
 
   subscribe(callback) {
     this.listeners.push(callback);
-    callback(this.transactions, this.filteredTransaction);
+    callback(this.transactions, this.filteredTransactions);
   },
 
   filter(transactions) {
-    this.filteredTransaction = transactions;
+    this.filteredTransactions = transactions;
     this.notify();
   },
 
@@ -42,11 +42,7 @@ const store = {
         item.id === transactionData.id
           ? {
               ...item,
-              type: transactionData.type,
-              amount: transactionData.amount,
-              category: transactionData.category,
-              date: transactionData.date,
-              description: transactionData.description,
+              ...transactionData,
             }
           : item
       )
@@ -54,7 +50,7 @@ const store = {
   },
 
   notify() {
-    this.listeners.forEach((cb) => cb(this.get(), this.filteredTransaction));
+    this.listeners.forEach((cb) => cb(this.get(), this.filteredTransactions));
   },
 };
 

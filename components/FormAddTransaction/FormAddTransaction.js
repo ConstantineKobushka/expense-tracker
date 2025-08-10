@@ -2,11 +2,14 @@ import store from '../../observable/observableStore.js';
 import { apiFetchHtml } from '../../api/fetchApi.js';
 
 export async function createFormAddTransaction(formAddContainer) {
-  const html = await apiFetchHtml(
-    './components/FormAddTransaction/FormAddTransaction.html'
-  );
-
-  formAddContainer.innerHTML = html;
+  try {
+    const html = await apiFetchHtml(
+      './components/FormAddTransaction/FormAddTransaction.html'
+    );
+    formAddContainer.innerHTML = html;
+  } catch (error) {
+    alert(error.message);
+  }
 
   const transactionForm = document.querySelector('.transaction-form');
   const addBtn = document.querySelector('.transaction-form--btn');
@@ -20,7 +23,7 @@ export async function createFormAddTransaction(formAddContainer) {
 
     const newTransaction = {
       type: transactionForm.elements.type.value,
-      amount: Number(transactionForm.elements.amount.value),
+      amound: Number(transactionForm.elements.amound.value),
       category: transactionForm.elements.category.value.trim(),
       date: transactionForm.elements.date.value,
       description: transactionForm.elements.description.value.trim(),

@@ -2,21 +2,24 @@ import store from '../../observable/observableStore.js';
 import { apiFetchHtml } from '../../api/fetchApi.js';
 
 export async function createFilters(FiltersContainer) {
-  const html = await apiFetchHtml('./components/Filters/Filters.html');
-
-  FiltersContainer.innerHTML = html;
+  try {
+    const html = await apiFetchHtml('./components/Filters/Filters.html');
+    FiltersContainer.innerHTML = html;
+  } catch (error) {
+    alert(error.message);
+  }
 
   const filterElements = {
     type: document.querySelector('#filter-type'),
     category: document.querySelector('#filter-category'),
-    amount: document.querySelector('#filter-amound'),
+    amound: document.querySelector('#filter-amound'),
     description: document.querySelector('#filter-search'),
     date: document.querySelector('#filter-date'),
   };
 
   filterElements.type.addEventListener('change', showFilterTypeHandler);
   filterElements.category.addEventListener('change', showFilterCategoryHandler);
-  filterElements.amount.addEventListener('input', showFilterAmountHandler);
+  filterElements.amound.addEventListener('input', showFilterAmoundHandler);
   filterElements.description.addEventListener(
     'input',
     showFilterDescriptionHandler
@@ -59,11 +62,13 @@ export async function createFilters(FiltersContainer) {
     );
   }
 
-  function showFilterAmountHandler() {
-    const value = filterElements.amount.value.trim();
+  function showFilterAmoundHandler() {
+    const value = filterElements.amound.value.trim();
+    console.log(value);
     if (!value) return store.filter(null);
 
-    filterHandler((item) => item.amount.toString().includes(value), 'amount');
+    // filterHandler((item) => item.amound.toString().includes(value), 'amound');
+    filterHandler((item) => item.amound.toString() === value, 'amound');
   }
 
   function showFilterDescriptionHandler() {

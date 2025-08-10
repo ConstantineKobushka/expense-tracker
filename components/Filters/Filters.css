@@ -16,3 +16,10 @@
   border-radius: 5px;
   border: 1px solid black;
 }
+.filters-form--btn {
+  min-width: 100px;
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+}

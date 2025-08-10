@@ -7,19 +7,6 @@
       <option value="income">Income</option>
       <option value="expense">Expense</option>
     </select>
-
-    <input
-      class="filters-form--input"
-      id="filter-date"
-      name="date"
-      type="date"
-      placeholder="Date"
-    />
-
-    <select class="filters-form--select" id="filter-category" name="category">
-      <option value="category" selected disabled hidden>Category</option>
-    </select>
-
     <input
       class="filters-form--input"
       id="filter-amound"
@@ -27,12 +14,23 @@
       type="text"
       placeholder="Amound"
     />
+    <select class="filters-form--select" id="filter-category" name="category">
+      <option value="category" selected disabled hidden>Category</option>
+    </select>
     <input
       class="filters-form--input"
-      id="filter-search"
-      name="search"
-      type="text"
-      placeholder="Search"
+      id="filter-date"
+      name="date"
+      type="date"
+      placeholder="Date"
     />
+    <input
+      class="filters-form--input"
+      id="filter-description"
+      name="description"
+      type="text"
+      placeholder="Description"
+    />
+    <button class="filters-form--btn" type="button">Reset All</button>
   </form>
 </div>

@@ -11,20 +11,25 @@ export async function createFilters(FiltersContainer) {
 
   const filterElements = {
     type: document.querySelector('#filter-type'),
-    category: document.querySelector('#filter-category'),
     amound: document.querySelector('#filter-amound'),
-    description: document.querySelector('#filter-search'),
+    category: document.querySelector('#filter-category'),
     date: document.querySelector('#filter-date'),
+    description: document.querySelector('#filter-description'),
+    reset: document.querySelector('.filters-form--btn'),
   };
 
   filterElements.type.addEventListener('change', showFilterTypeHandler);
-  filterElements.category.addEventListener('change', showFilterCategoryHandler);
   filterElements.amound.addEventListener('input', showFilterAmoundHandler);
+  filterElements.category.addEventListener('change', showFilterCategoryHandler);
+  filterElements.date.addEventListener('input', showFilterDateHandler);
   filterElements.description.addEventListener(
     'input',
     showFilterDescriptionHandler
   );
-  filterElements.date.addEventListener('input', showFilterDateHandler);
+  filterElements.reset.addEventListener('click', () => {
+    resetFilters();
+    store.filter(null);
+  });
 
   function resetFilters(except) {
     Object.entries(filterElements).forEach(([key, el]) => {
@@ -67,7 +72,6 @@ export async function createFilters(FiltersContainer) {
     console.log(value);
     if (!value) return store.filter(null);
 
-    // filterHandler((item) => item.amound.toString().includes(value), 'amound');
     filterHandler((item) => item.amound.toString() === value, 'amound');
   }
 

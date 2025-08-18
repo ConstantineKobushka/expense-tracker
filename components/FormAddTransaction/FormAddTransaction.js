@@ -23,7 +23,7 @@ export async function createFormAddTransaction(formAddContainer) {
 
     const newTransaction = {
       type: transactionForm.elements.type.value,
-      amound: Number(transactionForm.elements.amound.value),
+      amount: Number(transactionForm.elements.amount.value),
       category: transactionForm.elements.category.value.trim(),
       date: transactionForm.elements.date.value,
       description: transactionForm.elements.description.value.trim(),

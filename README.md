@@ -1,6 +1,6 @@
 # Expense Tracker – Manage Your Finances with Ease 💰📊📈
 
-🔗 **Demo:**  
+🔗 **Demo:**
 [https://constantinekobushka.github.io/expense-tracker/](https://constantinekobushka.github.io/expense-tracker/)
 
 ![Expense Tracker Preview](preview.png)
@@ -9,7 +9,7 @@
 
 ## 🔎 Project Description
 
-**Expense Tracker** is a convenient application for tracking income and expenses, helping you always keep your finances under control.  
+**Expense Tracker** is a convenient application for tracking income and expenses, helping you always keep your finances under control.
 It allows you to see where your money goes, plan your budget, and get a clear picture of your financial situation.
 
 The app was created **without project bundlers**, using a **component-based approach** and the **observable** architectural pattern for centralized state management.

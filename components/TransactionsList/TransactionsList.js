@@ -42,10 +42,10 @@ export async function createTransactionsList(transactionContainer) {
 
       const transactionData = store.get().filter((item) => item.id === id);
 
-      const { amound, category, date, description, type } = transactionData[0];
+      const { amount, category, date, description, type } = transactionData[0];
 
       editeForm.elements.type.value = type;
-      editeForm.elements.amound.value = amound;
+      editeForm.elements.amount.value = amount;
       editeForm.elements.category.value = category;
       editeForm.elements.date.value = date;
       editeForm.elements.description.value = description;
@@ -64,7 +64,7 @@ export async function createTransactionsList(transactionContainer) {
     const transactionData = {
       id,
       type: editeForm.elements.type.value,
-      amound: Number(editeForm.elements.amound.value),
+      amount: Number(editeForm.elements.amount.value),
       category: editeForm.elements.category.value.trim(),
       date: editeForm.elements.date.value,
       description: editeForm.elements.description.value.trim(),
@@ -110,7 +110,7 @@ export async function createTransactionsList(transactionContainer) {
     <thead>
       <tr>
         <th>Type</th>
-        <th>Amound</th>
+        <th>Amount</th>
         <th>Category</th>
         <th>Date</th>
         <th>Description</th>
@@ -124,7 +124,7 @@ export async function createTransactionsList(transactionContainer) {
         (item) => `
         <tr data-id="${escapeHTML(item.id)}">
           <td>${item.type === 'income' ? 'Дохід' : 'Витрата'}</td>
-          <td>${formatCurrency(item.amound)}</td>
+          <td>${formatCurrency(item.amount)}</td>
           <td>${escapeHTML(item.category)}</td>
           <td>${escapeHTML(item.date)}</td>
           <td>${escapeHTML(item.description)}</td>

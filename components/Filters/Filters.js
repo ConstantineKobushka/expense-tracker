@@ -11,7 +11,7 @@ export async function createFilters(FiltersContainer) {
 
   const filterElements = {
     type: document.querySelector('#filter-type'),
-    amound: document.querySelector('#filter-amound'),
+    amount: document.querySelector('#filter-amount'),
     category: document.querySelector('#filter-category'),
     date: document.querySelector('#filter-date'),
     description: document.querySelector('#filter-description'),
@@ -19,7 +19,7 @@ export async function createFilters(FiltersContainer) {
   };
 
   filterElements.type.addEventListener('change', showFilterTypeHandler);
-  filterElements.amound.addEventListener('input', showFilterAmoundHandler);
+  filterElements.amount.addEventListener('input', showFilterAmountHandler);
   filterElements.category.addEventListener('change', showFilterCategoryHandler);
   filterElements.date.addEventListener('input', showFilterDateHandler);
   filterElements.description.addEventListener(
@@ -67,12 +67,12 @@ export async function createFilters(FiltersContainer) {
     );
   }
 
-  function showFilterAmoundHandler() {
-    const value = filterElements.amound.value.trim();
+  function showFilterAmountHandler() {
+    const value = filterElements.amount.value.trim();
     console.log(value);
     if (!value) return store.filter(null);
 
-    filterHandler((item) => item.amound.toString() === value, 'amound');
+    filterHandler((item) => item.amount.toString() === value, 'amount');
   }
 
   function showFilterDescriptionHandler() {

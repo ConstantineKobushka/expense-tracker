@@ -1,9 +1,9 @@
 export function formatCurrencyLocation(
-  amound,
+  amount,
   currency = 'UAH',
   locale = 'uk-UA'
 ) {
-  return amound.toLocaleString(locale, {
+  return amount.toLocaleString(locale, {
     style: 'currency',
     currency: currency,
     minimumFractionDigits: 2,
@@ -11,8 +11,8 @@ export function formatCurrencyLocation(
   });
 }
 
-export function formatCurrency(amound, locale = 'uk-UA') {
-  return amound.toLocaleString(locale, {
+export function formatCurrency(amount, locale = 'uk-UA') {
+  return amount.toLocaleString(locale, {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
